@@ -42,3 +42,30 @@ else
        echo "$1 nie jest katalogiem"
        exit 1
 fi
+
+## lepsze rozwiazanie
+#!/bin/bash
+if [ -z $1 ]; then
+echo "brak argumentu"
+elif [ ! -f $1 ]; then
+echo "podany argumentu nie jest plikiem"
+else
+awk 'BEGIN{ linia=0 } { 
+	linia++;
+	for(i=1;i<=NF;i++){
+		if($i ~ /^\([0-9]+\)[.?!]$/ ){
+			match($i,/\([0-9]+\)/)
+			odwolanie=substr($i,RSTART,RLENGTH)
+			a[odwolanie]=a[odwolanie] linia "," ;
+		}
+		if($i ~ /^\([0-9]+\)$/){
+			a[$i]=a[$i] linia "," ;
+		}
+	
+	}
+
+ } END{for(zmienna in a){
+ print zmienna,"linie:" a[zmienna]} }' $1
+
+fi
+
