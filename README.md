@@ -10,3 +10,6 @@ http://www.pichen.com/pl/skrypty_bash
 AWK:
 http://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/
 
+PERL: REGEX
+http://perldoc.perl.org/perlretut.html
+
